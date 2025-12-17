@@ -34,8 +34,8 @@ const styles = {
     gap: "10px",
   },
   logo: {
-    width: "40px",
-    height: "40px",
+    width: "80px",
+    height: "80px",
   },
   title: {
     fontWeight: "bold",
@@ -51,7 +51,7 @@ const styles = {
   },
   link: {
     textDecoration: "none",
-    color: "#333",
+    color: "#2c7a7b",
     fontWeight: "500",
   },
 };
