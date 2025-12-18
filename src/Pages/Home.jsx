@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import WelcomeSection from "../components/WelcomeSection";
 import HeroBox from "../components/HeroBox";
+import Footer from "../components/Footer";
 
 function Home() {
   const dailyRef = useRef(null);
@@ -54,6 +55,11 @@ function Home() {
             </tbody>
           </table>
         </section>
+        <Footer
+          studentName="NOOR JANAJREH"
+          studentId="12400696"
+          githubUrl="https://github.com/noorjanajreh2006-create"
+        />
       </main>
     </div>
   );

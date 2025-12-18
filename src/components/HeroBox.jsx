@@ -24,13 +24,11 @@ function HeroBox({ onAddTask, onViewStatus }) {
 const styles = {
   heroBox: {
     flex: "1 1 420px",
+    backgroundColor: "#ffffff",
     borderRadius: "16px",
-    padding: "28px",
+    padding: "26px",
     border: "1px solid #e6e6e6",
-    boxShadow: "0 6px 18px rgba(0,0,0,0.06)",
-    backgroundImage: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
-    position: "relative",
-    overflow: "hidden",
+    boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
   },
   h1: {
     margin: 0,
@@ -42,13 +40,11 @@ const styles = {
     color: "#6b7280",
     lineHeight: 1.7,
     fontSize: "15px",
-    marginBottom: 0,
   },
   actions: {
     display: "flex",
     gap: "14px",
     marginTop: "20px",
-    flexWrap: "wrap",
   },
   primaryBtn: {
     border: "none",
