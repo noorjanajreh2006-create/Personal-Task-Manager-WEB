@@ -1,0 +1,73 @@
+import React from "react";
+
+function HeroBox({ onAddTask, onViewStatus }) {
+  return (
+    <div style={styles.heroBox}>
+      <h1 style={styles.h1}>Manage your tasks easily</h1>
+      <p style={styles.p}>
+        Organize tasks by priority, category, and status — and keep your day under control.
+      </p>
+
+      <div style={styles.actions}>
+        <button style={styles.primaryBtn} onClick={onAddTask}>
+          Add Task
+        </button>
+
+        <button style={styles.secondaryBtn} onClick={onViewStatus}>
+          View Status
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const styles = {
+  heroBox: {
+    flex: "1 1 420px",
+    borderRadius: "16px",
+    padding: "28px",
+    border: "1px solid #e6e6e6",
+    boxShadow: "0 6px 18px rgba(0,0,0,0.06)",
+    backgroundImage: "linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)",
+    position: "relative",
+    overflow: "hidden",
+  },
+  h1: {
+    margin: 0,
+    fontSize: "34px",
+    color: "#1f2937",
+  },
+  p: {
+    marginTop: "12px",
+    color: "#6b7280",
+    lineHeight: 1.7,
+    fontSize: "15px",
+    marginBottom: 0,
+  },
+  actions: {
+    display: "flex",
+    gap: "14px",
+    marginTop: "20px",
+    flexWrap: "wrap",
+  },
+  primaryBtn: {
+    border: "none",
+    backgroundColor: "#2c7a7b",
+    color: "#fff",
+    padding: "12px 18px",
+    borderRadius: "12px",
+    cursor: "pointer",
+    fontWeight: "700",
+  },
+  secondaryBtn: {
+    border: "1px solid #cbd5e1",
+    backgroundColor: "#f8fafc",
+    color: "#1f2937",
+    padding: "12px 18px",
+    borderRadius: "12px",
+    cursor: "pointer",
+    fontWeight: "700",
+  },
+};
+
+export default HeroBox;
