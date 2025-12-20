@@ -1,0 +1,61 @@
+.page {
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  padding: 30px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+
+.btn {
+  margin-top: 15px;
+  padding: 8px 14px;
+  border: none;
+}
+
+.primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit {
+  background-color: orange;
+  color: white;
+  margin-right: 10px;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+}
+
+
+.task-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-top: 15px;
+  border-radius: 5px;
+}
