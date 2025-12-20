@@ -11,7 +11,7 @@ function TaskList({ tasks, onEdit, onDelete }) {
 
           <p><b>Priority:</b> {task.priority}</p>
           <p><b>Status:</b> {task.status}</p>
-          <p><b>Category:</b> {task.category}</p>
+          <p><b>Category:</b> {task.categories}</p>
           <p><b>Start Date:</b> {task.startDate}</p>
           <p><b>Duration:</b> {task.durationDays} days</p>
 
