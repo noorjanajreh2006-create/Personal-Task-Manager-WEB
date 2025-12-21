@@ -7,7 +7,7 @@ const AddCategories=()=> {
         const savedCategories = localStorage.getItem("categories");
         return savedCategories ? JSON.parse(savedCategories)
             : [
-                { 
+                {  
                     id: 1,
                     title: "Projects", 
                     tasks: [], 
