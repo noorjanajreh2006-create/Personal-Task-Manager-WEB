@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
 
-function TaskForm({ addTask, updateTask, taskToEdit }) {
+function TaskForm({ addTask, updateTask, taskToEdit, }) {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("Important");
   const [durationDays, setDurationDays] = useState("");
-  const [category, setCategory] = useState("");
+  const [categories, setCategories] = useState([]);//edit
   const [startDate, setStartDate] = useState("");
   const [status, setStatus] = useState("To Do");
+
+  //edit
+    useEffect(() => {
+            const storeCategories = localStorage.getItem("categories");
+            setCategories(JSON.parse(storeCategories));
+    }, []);
 
   useEffect(() => {
     if (taskToEdit) {
       setTitle(taskToEdit.title);
       setPriority(taskToEdit.priority);
       setDurationDays(taskToEdit.durationDays);
-      setCategory(taskToEdit.category);
+      setCategories(taskToEdit.categories);
       setStartDate(taskToEdit.startDate);
       setStatus(taskToEdit.status);
     }
@@ -27,7 +33,7 @@ function TaskForm({ addTask, updateTask, taskToEdit }) {
       title,
       priority,
       durationDays,
-      category,
+      categories,
       startDate,
       status,
     };
@@ -37,7 +43,7 @@ function TaskForm({ addTask, updateTask, taskToEdit }) {
     setTitle("");
     setPriority("Important");
     setDurationDays("");
-    setCategory("");
+    // setCategories("");
     setStartDate("");
     setStatus("To Do");
   };
@@ -66,10 +72,14 @@ function TaskForm({ addTask, updateTask, taskToEdit }) {
       </select>
 
       <label>Category</label>
-      <input
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
+      <select>
+          <option value="Select">Select</option>
+
+          {categories.map((category)=>(
+              <option key={category.id} value={category.title}>{category.title}</option>
+          ))}
+
+      </select>
 
       <label>Start Date</label>
       <input
