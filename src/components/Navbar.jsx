@@ -1,21 +1,41 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <nav style={styles.nav}>
-      <div style={styles.logoContainer}>
-        <img src="/logo.png" alt="Personal Task Manager" style={styles.logo} />
-        <span style={styles.title}>Personal Task Manager</span>
-      </div>
+    <>
+      <style>
+        {`
+          .nav-hover {
+            text-decoration: none;
+            color: #6b6b6b;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: color 0.3s ease;
+          }
 
-      <ul style={styles.links}>
-        <li><NavLink to="/" style={styles.link}>Home</NavLink></li>
-        <li><NavLink to="/add-task" style={styles.link}>Add Tasks</NavLink></li>
-        <li><NavLink to="/priorities" style={styles.link}>Priorities</NavLink></li>
-        <li><NavLink to="/categories" style={styles.link}>Categories</NavLink></li>
-        <li><NavLink to="/status" style={styles.link}>Status</NavLink></li>
-      </ul>
-    </nav>
+          .nav-hover:hover {
+            color: #49a078;
+          }
+        `}
+      </style>
+
+      <nav style={styles.nav}>
+        <div style={styles.logoContainer}>
+          <img src="/logo.png" alt="Personal Task Manager" style={styles.logo} />
+          <span style={styles.title}>Personal Task Manager</span>
+        </div>
+
+        <ul style={styles.links}>
+          <li><NavLink to="/" className="nav-hover">Home</NavLink></li>
+          <li><NavLink to="/add-task" className="nav-hover">Add Tasks</NavLink></li>
+          <li><NavLink to="/priorities" className="nav-hover">Priorities</NavLink></li>
+          <li><NavLink to="/categories" className="nav-hover">Categories</NavLink></li>
+          <li><NavLink to="/status" className="nav-hover">Status</NavLink></li>
+        </ul>
+      </nav>
+    </>
   );
 }
 
@@ -24,35 +44,31 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
-    padding: "10px 20px",
-    backgroundColor: "#ffffff",
+    padding: "12px 30px",
+    backgroundColor: "#fff",
     borderBottom: "1px solid #ddd",
   },
   logoContainer: {
     display: "flex",
     alignItems: "center",
-    gap: "10px",
+    gap: "12px",
   },
   logo: {
-    width: "40px",
-    height: "40px",
+    width: "70px",
+    height: "70px",
+    borderRadius: "10px",
   },
   title: {
     fontWeight: "bold",
-    fontSize: "18px",
+    fontSize: "20px",
     color: "#2c7a7b",
   },
   links: {
     listStyle: "none",
     display: "flex",
-    gap: "20px",
+    gap: "22px",
     margin: 0,
     padding: 0,
-  },
-  link: {
-    textDecoration: "none",
-    color: "#333",
-    fontWeight: "500",
   },
 };
 

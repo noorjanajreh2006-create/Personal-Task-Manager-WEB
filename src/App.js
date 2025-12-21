@@ -1,17 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
+import Home from "./Pages/Home";
+import AddTask from "./Pages/AddTask";
+import Priorities from "./Pages/Priorities";
+import Categories from "./Pages/Categories ";
+import Status from "./Pages/Status";
+
 function App() {
     return (
         <BrowserRouter>
             <Navbar />
 
             <Routes>
-                <Route path="/" element={<h1>Home</h1>} />
-                <Route path="/add-task" element={<h1>Add Tasks</h1>} />
-                <Route path="/priorities" element={<h1>Priorities</h1>} />
-                <Route path="/categories" element={<h1>Categories</h1>} />
-                <Route path="/status" element={<h1>Status</h1>} />
+                <Route path="/" element={<Home />} />
+                <Route path="/add-task" element={<AddTask />} />
+                <Route path="/priorities" element={<Priorities />} />
+                <Route path="/categories" element={<Categories />} />
+                <Route path="/status" element={<Status />} />
             </Routes>
         </BrowserRouter>
     );
