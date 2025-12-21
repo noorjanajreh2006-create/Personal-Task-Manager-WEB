@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import List_Categories from "./List-Categories"
+import List_Categories from "./List_Categories"
 
 
 const AddCategories=()=> {
