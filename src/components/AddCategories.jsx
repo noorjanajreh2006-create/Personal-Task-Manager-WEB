@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import List_Categories from "./List-Categories"
+import ListCategories from "./ListCategories"; 
 
 
 const AddCategories=()=> {
@@ -7,22 +7,22 @@ const AddCategories=()=> {
         const savedCategories = localStorage.getItem("categories");
         return savedCategories ? JSON.parse(savedCategories)
             : [
-                {
+                { 
                     id: 1,
-                    title: "Projects",
-                    tasks: [],
-                },
+                    title: "Projects", 
+                    tasks: [], 
+                }, 
                 {
                     id: 2,
                     title: "Work",
                     tasks: [],
                 },
-            ];
+            ]; 
     });
 
     useEffect(() => {
-        localStorage.setItem("categories", JSON.stringify(categories));
-    }, [categories]);
+        localStorage.setItem("categories", JSON.stringify(categories) ||[]);
+    }, [categories]); 
 
 
     // const [categories, setCategories] = useState([
@@ -35,10 +35,10 @@ const AddCategories=()=> {
     //         id: 2,
     //         title: "Work",
     //         tasks: ["retreive Emails", "Meeting Teams"],
-    //     },
-    // ]);
+    //     }, 
+    // ]); 
 
-    const [newCategory, setNewCategory] = useState("");
+    const [newCategory, setNewCategory] = useState(""); 
 
 
     const addCategory = () => {
@@ -65,7 +65,7 @@ const AddCategories=()=> {
                 <button style={styles.button} onClick={addCategory}>Add Category</button>
             </div>
 
-            <List_Categories Categories={categories} setCategories={setCategories} />
+            <ListCategories Categories={categories} setCategories={setCategories} />
 
         </div>
     )

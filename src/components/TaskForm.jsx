@@ -11,7 +11,7 @@ function TaskForm({ addTask, updateTask, taskToEdit, }) {
   //edit
     useEffect(() => {
             const storeCategories = localStorage.getItem("categories");
-            setCategories(JSON.parse(storeCategories));
+            setCategories(JSON.parse(storeCategories) || []);
     }, []);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-const List_Categories=(props)=>{
+const ListCategories=(props)=>{
 
     const deleteCategory = (id) => {
         props.setCategories(props.Categories.filter((category) => category.id !== id));
@@ -61,4 +61,4 @@ const styles={
 
     }
 }
-export default List_Categories;
+export default ListCategories;
