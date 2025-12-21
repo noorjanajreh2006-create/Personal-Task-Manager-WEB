@@ -16,11 +16,11 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/add-task" element={<AddTask />} />
                 <Route path="/priorities" element={<Priorities />} />
-                <Route path="/categories" element={<Categories />} />
+                <Route path="/categories" element={<Categories />} /> 
                 <Route path="/status" element={<Status />} />
             </Routes>
         </BrowserRouter>
     );
-}
+} 
 
 export default App;

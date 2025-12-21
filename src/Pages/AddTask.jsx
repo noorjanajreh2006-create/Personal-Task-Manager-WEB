@@ -17,7 +17,7 @@ function AddTask() {
       tasks.map((t) => (t.id === updatedTask.id ? updatedTask : t))
     );
     setTaskToEdit(null);
-  };
+  }; 
 
   const deleteTask = (id) => {
     setTasks(tasks.filter((t) => t.id !== id));
