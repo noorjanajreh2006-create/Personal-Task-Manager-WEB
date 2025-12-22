@@ -3,6 +3,7 @@ import PrioritiesTaskItem from "../components/PrioritiesTaskItem";
 import PriorityModal from "../components/PriorityModal";
 import Footer from "../components/Footer";
 import PriorityTables from "../components/PriorityTables";
+
 function Priorities() {
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
@@ -15,16 +16,25 @@ function Priorities() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
-  const changePriority = (priority) => {
-    if (!selectedTask) return;
+const changePriority = (level) => {
+  if (!selectedTask) return;
 
-    setTasks((prev) =>
-      prev.map((t) =>
-        t.id === selectedTask.id ? { ...t, priority } : t
-      )
-    );
-    setSelectedTask(null);
+  const map = {
+    very: "Very Important",
+    important: "Important",
+    low: "Less Important",
   };
+
+  setTasks((prev) =>
+    prev.map((t) =>
+      t.id === selectedTask.id
+        ? { ...t, priority: map[level] }
+        : t
+    )
+  );
+
+  setSelectedTask(null);
+};
 
   const renderTable = (title, level) => (
     <>
@@ -59,29 +69,29 @@ function Priorities() {
       
       <h2 style={pageTitle}>Tasks by Priority</h2>
 
-      {renderTable("🔴 Very Important", "very")}
-      {renderTable("🟠 Important", "important")}
-      {renderTable("🟢 Less Important", "low")}
+      {renderTable("🔴 Very Important", "Very Important")}
+      {renderTable("🟠 Important", "Important")}
+      {renderTable("🟢 Less Important", "Less Important")}
 
-      {/* DASHBOARD CARDS */}
+
       <div style={cardsContainer}>
         <div style={{ ...card, ...greenCard }}>
           <div style={count}>
-            {tasks.filter((t) => t.priority === "very").length}
+            {tasks.filter(t => t.priority === "Very Important").length}
           </div>
           <div style={label}>Very Important</div>
         </div>
 
         <div style={{ ...card, ...yellowCard }}>
           <div style={count}>
-            {tasks.filter((t) => t.priority === "important").length}
+            {tasks.filter(t => t.priority === "Important").length}
           </div>
           <div style={label}>Important</div>
         </div>
 
         <div style={{ ...card, ...redCard }}>
           <div style={count}>
-            {tasks.filter((t) => t.priority === "low").length}
+            {tasks.filter(t => t.priority === "Less Important").length}
           </div>
           <div style={label}>Less Important</div>
         </div>

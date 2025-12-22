@@ -19,7 +19,6 @@ const td = {
   color: "#111827",
 };
 
-
 const btn = {
   background: "#2c7a7b",
   color: "#fff",
@@ -28,7 +27,5 @@ const btn = {
   borderRadius: "6px",
   cursor: "pointer",
 };
-
-
 
 export default TaskItem;

@@ -5,9 +5,22 @@ const STORAGE_KEY = "tasks";
 function PriorityTables() {
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
+  const loadTasks = () => {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     setTasks(Array.isArray(saved) ? saved : []);
+  };
+
+  useEffect(() => {
+    loadTasks();
+
+    window.addEventListener("storage", loadTasks);
+
+    window.addEventListener("focus", loadTasks);
+
+    return () => {
+      window.removeEventListener("storage", loadTasks);
+      window.removeEventListener("focus", loadTasks);
+    };
   }, []);
 
   const groups = {
@@ -32,7 +45,6 @@ function PriorityTables() {
               <th>Duration</th>
             </tr>
           </thead>
-
           <tbody>
             {list.map(task => (
               <tr key={task.id}>

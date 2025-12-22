@@ -6,7 +6,9 @@ function PrioritySection({
   tasks,
   onDelete,
   onChangePriority,
-}) {
+})
+
+ {
   return (
     <div style={{ marginBottom: "30px" }}>
       <h3 style={sectionTitle}>{title}</h3>
@@ -33,6 +35,5 @@ const sectionTitle = {
   color: "#1f2937",
   letterSpacing: "0.5px",
 };
-
 
 export default PrioritySection;
