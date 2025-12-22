@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
 function Navbar() {
   return (
     <>
@@ -22,18 +21,24 @@ function Navbar() {
       </style>
 
       <nav style={styles.nav}>
-        <div style={styles.logoContainer}>
-          <img src="/logo.png" alt="Personal Task Manager" style={styles.logo} />
-          <span style={styles.title}>Personal Task Manager</span>
-        </div>
+      <div style={styles.logoContainer}>
+        <img src="/logo.png" alt="Personal Task Manager" style={styles.logo} />
+        <span style={styles.title}>Personal Task Manager</span>
 
-        <ul style={styles.links}>
-          <li><NavLink to="/" className="nav-hover">Home</NavLink></li>
-          <li><NavLink to="/add-task" className="nav-hover">Add Tasks</NavLink></li>
-          <li><NavLink to="/priorities" className="nav-hover">Priorities</NavLink></li>
-          <li><NavLink to="/categories" className="nav-hover">Categories</NavLink></li>
-          <li><NavLink to="/status" className="nav-hover">Status</NavLink></li>
-        </ul>
+      </div>
+
+
+       <div style={{ display: "flex", alignItems: "center", gap: "15px" }}>
+    <ul style={styles.links}>
+    <li><NavLink to="/" className="nav-hover">Home</NavLink></li>
+    <li><NavLink to="/add-task" className="nav-hover">Add Tasks</NavLink></li>
+    <li><NavLink to="/priorities" className="nav-hover">Priorities</NavLink></li>
+    <li><NavLink to="/categories" className="nav-hover">Categories</NavLink></li>
+    <li><NavLink to="/status" className="nav-hover">Status</NavLink></li>
+  </ul>
+
+</div>
+
       </nav>
     </>
   );
@@ -45,9 +50,9 @@ const styles = {
     alignItems: "center",
     justifyContent: "space-between",
     padding: "12px 30px",
-    backgroundColor: "#fff",
     borderBottom: "1px solid #ddd",
   },
+
   logoContainer: {
     display: "flex",
     alignItems: "center",
