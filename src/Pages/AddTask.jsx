@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 const STORAGE_KEY = "tasks";
 
 function AddTask() {
-  // ✅ تحميل من localStorage من أول render (بدون useEffect تحميل)
   const [tasks, setTasks] = useState(() => {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     return Array.isArray(saved) ? saved : [];
@@ -15,7 +14,6 @@ function AddTask() {
 
   const [taskToEdit, setTaskToEdit] = useState(null);
 
-  // ✅ حفظ بعد أي تغيير (هيك ما رح يكتب [] بالغلط أول ما تفتح الصفحة)
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }, [tasks]);

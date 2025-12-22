@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import WelcomeSection from "../components/WelcomeSection";
 import HeroBox from "../components/HeroBox";
+import TodaysTasksTable from "../components/TodaysTasksTable";
 import Footer from "../components/Footer";
 
 function Home() {
@@ -33,32 +34,11 @@ function Home() {
           </div>
         </section>
 
-        <section ref={dailyRef} style={styles.dailySection}>
-          <h3 style={styles.dailyTitle}>Today’s Tasks</h3>
-
-          <table style={styles.table}>
-            <thead>
-              <tr>
-                <th style={styles.th}>Title</th>
-                <th style={styles.th}>Priority</th>
-                <th style={styles.th}>Category</th>
-                <th style={styles.th}>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style={styles.td}>—</td>
-                <td style={styles.td}>—</td>
-                <td style={styles.td}>—</td>
-                <td style={styles.td}>—</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+        <TodaysTasksTable tableRef={dailyRef} />
         <Footer
-          studentName="NOOR JANAJREH"
-          studentId="12400696"
-          githubUrl="https://github.com/noorjanajreh2006-create"
+        studentName="NOOR JANAJREH"
+        studentId="12400696"
+        githubUrl="https://github.com/noorjanajreh2006-create"
         />
       </main>
     </div>
@@ -98,32 +78,6 @@ const styles = {
   },
   li: {
     marginBottom: "10px",
-  },
-  dailySection: {
-    backgroundColor: "#fff",
-    borderRadius: "16px",
-    padding: "24px",
-    border: "1px solid #e6e6e6",
-  },
-  dailyTitle: {
-    marginBottom: "14px",
-    color: "#2c7a7b",
-    fontSize: "18px",
-  },
-  table: {
-    width: "100%",
-    borderCollapse: "collapse",
-  },
-  th: {
-    textAlign: "left",
-    padding: "10px",
-    borderBottom: "1px solid #e6e6e6",
-    color: "#374151",
-  },
-  td: {
-    padding: "10px",
-    borderBottom: "1px solid #f0f0f0",
-    color: "#111827",
   },
 };
 
