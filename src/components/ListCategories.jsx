@@ -1,35 +1,55 @@
-const ListCategories=(props)=>{
+import { useEffect, useState } from "react";
+const ListCategories = (props) => {
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        const storedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+        setTasks(Array.isArray(storedTasks) ? storedTasks : []);
+    }, []);
 
     const deleteCategory = (id) => {
-        props.setCategories(props.Categories.filter((category) => category.id !== id));
+        props.setCategories(
+            props.Categories.filter((category) => category.id !== id)
+        );
     };
 
-    return(
+    return (
         <div>
-            {props.Categories.map((category) => (
-                <div style={styles.category_card} key={category.id}>
-                    <div style={styles.category_header}>
-                        <h2>{category.title}</h2>
-                        <button style={styles.delete_btn} onClick={() => deleteCategory(category.id)}>
-                            Delete
-                        </button>
-                    </div>
+            {props.Categories.map((category) => {
+                // 🟢 فلترة المهام حسب الفئة
+                const categoryTasks = tasks.filter(
+                    (task) => String(task.categoryId) === String(category.id)
+                );
 
-                    {category.tasks.length === 0 ? (<p className="empty">NO Tasks Exist</p>)
-                        : (<ul style={styles.ul1}>
-                                {category.tasks.map((task, index) => (
-                                    <li style={styles.p1} key={index}>{task}</li>
-                                ))
-                                }
+                return (
+                    <div style={styles.category_card} key={category.id}>
+                        <div style={styles.category_header}>
+                            <h2>{category.title}</h2>
+                            <button
+                                style={styles.delete_btn}
+                                onClick={() => deleteCategory(category.id)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+
+                        {categoryTasks.length === 0 ? (
+                            <p className="empty">NO Tasks Exist</p>
+                        ) : (
+                            <ul style={styles.ul1}>
+                                {categoryTasks.map((task) => (
+                                    <li style={styles.p1} key={task.id}>
+                                        {task.title}
+                                    </li>
+                                ))}
                             </ul>
-                        )
-                    }
-
-                </div>
-            ))}
+                        )}
+                    </div>
+                );
+            })}
         </div>
-    )
-}
+    );
+};
 const styles={
     category_card:{
         border: "1px solid black",
@@ -55,7 +75,7 @@ const styles={
     },
         p1:{
         font_size: "15px",
-        color: "white",
+        color: "black",
         background_color: "red",
         padding: "4px"
 

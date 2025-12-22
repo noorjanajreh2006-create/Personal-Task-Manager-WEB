@@ -10,7 +10,7 @@ const Categories=()=> {
             <Footer
                 studentName="Hussam-Alsharif"
                 studentId="12428401"
-                githubUrl="رابط صفحتك"
+                githubUrl="https://github.com/hussamgithup-gthp"
             />
         </>
     )

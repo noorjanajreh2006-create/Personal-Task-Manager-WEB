@@ -22,21 +22,8 @@ const AddCategories=()=> {
 
     useEffect(() => {
         localStorage.setItem("categories", JSON.stringify(categories) ||[]);
-    }, [categories]); 
+    }, [categories]);
 
-
-    // const [categories, setCategories] = useState([
-    //     {
-    //         id: 1,
-    //         title: "Projects",
-    //         tasks: ["Do Team Project 1", "Do DataBase Project"],
-    //     },
-    //     {
-    //         id: 2,
-    //         title: "Work",
-    //         tasks: ["retreive Emails", "Meeting Teams"],
-    //     }, 
-    // ]); 
 
     const [newCategory, setNewCategory] = useState(""); 
 
