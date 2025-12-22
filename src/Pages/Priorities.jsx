@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import TaskItem from "../components/TaskItem";
+import PrioritiesTaskItem from "../components/PrioritiesTaskItem";
 import PriorityModal from "../components/PriorityModal";
 import Footer from "../components/Footer";
-
+import PriorityTables from "../components/PriorityTables";
 function Priorities() {
   const [tasks, setTasks] = useState(() => {
     const saved = localStorage.getItem("tasks");
@@ -43,7 +43,7 @@ function Priorities() {
           {tasks
             .filter((t) => t.priority === level)
             .map((task) => (
-              <TaskItem
+              <PrioritiesTaskItem
                 key={task.id}
                 task={task}
                 onChangePriority={setSelectedTask}
@@ -103,8 +103,6 @@ function Priorities() {
   );
 }
 
-/* ===== Styles ===== */
-
 const pageTitle = {
   textAlign: "center",
   fontSize: "26px",
@@ -141,8 +139,6 @@ const th = {
   fontWeight: "600",
   color: "#374151",
 };
-
-/* Dashboard Cards */
 
 const cardsContainer = {
   display: "flex",
@@ -182,5 +178,14 @@ const yellowCard = {
 const redCard = {
   background: "#22c55e",
 };
+
+function Dashboard() {
+  return (
+    <div className="container">
+      <h1>Task Priorities</h1>
+      <PriorityTables />
+    </div>
+  );
+}
 
 export default Priorities;
