@@ -3,19 +3,21 @@ import React from "react";
 function HeroBox({ onAddTask, onViewStatus }) {
   return (
     <div style={styles.heroBox}>
-      <h1 style={styles.h1}>Manage your tasks easily</h1>
-      <p style={styles.p}>
-        Organize tasks by priority, category, and status — and keep your day under control.
-      </p>
+      <div style={styles.content}>
+        <h1 style={styles.h1}>Manage your tasks easily</h1>
+        <p style={styles.p}>
+          Organize tasks by priority, category, and status — and keep your day under control.
+        </p>
 
-      <div style={styles.actions}>
-        <button style={styles.primaryBtn} onClick={onAddTask}>
-          Add Task
-        </button>
+        <div style={styles.actions}>
+          <button style={styles.primaryBtn} onClick={onAddTask}>
+            Add Task
+          </button>
 
-        <button style={styles.secondaryBtn} onClick={onViewStatus}>
-          View Status
-        </button>
+          <button style={styles.secondaryBtn} onClick={onViewStatus}>
+            View Status
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -30,8 +32,13 @@ const styles = {
     border: "1px solid #e6e6e6",
     boxShadow: "0 4px 14px rgba(0,0,0,0.06)",
   },
+
+  content: {
+    textAlign: "left",
+  },
+
   h1: {
-    margin: 0,
+    margin: "0 470px 0 0",
     fontSize: "34px",
     color: "#1f2937",
   },

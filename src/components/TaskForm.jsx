@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-function TaskForm({ addTask, updateTask, taskToEdit, }) {
+function TaskForm({ addTask, updateTask, taskToEdit }) {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("Important");
   const [durationDays, setDurationDays] = useState("");
-  const [categories, setCategories] = useState([]);//edit
+  const [categories, setCategories] = useState([]); // قائمة الفئات
+  const [selectedCategoryId, setSelectedCategoryId] = useState("Select"); // فئة المهمة
   const [startDate, setStartDate] = useState("");
   const [status, setStatus] = useState("To Do");
 
-  //edit
-    useEffect(() => {
-            const storeCategories = localStorage.getItem("categories");
-            setCategories(JSON.parse(storeCategories) || []);
-    }, []);
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("categories") || "[]");
+    setCategories(Array.isArray(stored) ? stored : []);
+  }, []);
 
   useEffect(() => {
     if (taskToEdit) {
-      setTitle(taskToEdit.title);
-      setPriority(taskToEdit.priority);
-      setDurationDays(taskToEdit.durationDays);
-      setCategories(taskToEdit.categories);
-      setStartDate(taskToEdit.startDate);
-      setStatus(taskToEdit.status);
+      setTitle(taskToEdit.title || "");
+      setPriority(taskToEdit.priority || "Important");
+      setDurationDays(taskToEdit.durationDays || "");
+      setStartDate(taskToEdit.startDate || "");
+      setStatus(taskToEdit.status || "To Do");
+      setSelectedCategoryId(taskToEdit.categoryId || "Select");
     }
   }, [taskToEdit]);
 
@@ -33,9 +33,9 @@ function TaskForm({ addTask, updateTask, taskToEdit, }) {
       title,
       priority,
       durationDays,
-      categories,
       startDate,
-      status,
+      status, // To Do / Missed / Done
+      categoryId: selectedCategoryId, // ✅ الربط
     };
 
     taskToEdit ? updateTask(task) : addTask(task);
@@ -43,19 +43,15 @@ function TaskForm({ addTask, updateTask, taskToEdit, }) {
     setTitle("");
     setPriority("Important");
     setDurationDays("");
-    // setCategories("");
     setStartDate("");
     setStatus("To Do");
+    setSelectedCategoryId("Select");
   };
 
   return (
     <form className="form" onSubmit={handleSubmit}>
       <label>Title</label>
-      <input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
-      />
+      <input value={title} onChange={(e) => setTitle(e.target.value)} required />
 
       <label>Priority</label>
       <select value={priority} onChange={(e) => setPriority(e.target.value)}>
@@ -72,32 +68,22 @@ function TaskForm({ addTask, updateTask, taskToEdit, }) {
       </select>
 
       <label>Category</label>
-      <select>
-          <option value="Select">Select</option>
-
-          {categories.map((category)=>(
-              <option key={category.id} value={category.title}>{category.title}</option>
-          ))}
-
+      <select value={selectedCategoryId} onChange={(e) => setSelectedCategoryId(e.target.value)}>
+        <option value="Select">Select</option>
+        {categories.map((c) => (
+          <option key={c.id} value={String(c.id)}>
+            {c.title}
+          </option>
+        ))}
       </select>
 
       <label>Start Date</label>
-      <input
-        type="date"
-        value={startDate}
-        onChange={(e) => setStartDate(e.target.value)}
-      />
+      <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
 
       <label>Duration (Days)</label>
-      <input
-        type="number"
-        value={durationDays}
-        onChange={(e) => setDurationDays(e.target.value)}
-      />
+      <input type="number" value={durationDays} onChange={(e) => setDurationDays(e.target.value)} />
 
-      <button className="btn primary">
-        {taskToEdit ? "Update Task" : "Add Task"}
-      </button>
+      <button type="submit" className="btn primary">{taskToEdit ? "Update Task" : "Add Task"}</button>
     </form>
   );
 }
