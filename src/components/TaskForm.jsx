@@ -4,8 +4,12 @@ function TaskForm({ addTask, updateTask, taskToEdit }) {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("Important");
   const [durationDays, setDurationDays] = useState("");
+
+ 
+
   const [categories, setCategories] = useState([]); 
   const [selectedCategoryId, setSelectedCategoryId] = useState("Select"); 
+
   const [startDate, setStartDate] = useState("");
   const [status, setStatus] = useState("To Do");
 
@@ -34,8 +38,9 @@ function TaskForm({ addTask, updateTask, taskToEdit }) {
       priority,
       durationDays,
       startDate,
-      status, 
-      categoryId: selectedCategoryId, 
+      status, // To Do / Missed / Done
+      categoryId: selectedCategoryId,
+
     };
 
     taskToEdit ? updateTask(task) : addTask(task);

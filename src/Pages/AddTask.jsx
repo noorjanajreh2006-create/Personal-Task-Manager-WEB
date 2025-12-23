@@ -7,12 +7,14 @@ import Footer from "../components/Footer";
 const STORAGE_KEY = "tasks";
 
 function AddTask() {
+
   const [tasks, setTasks] = useState(() => {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     return Array.isArray(saved) ? saved : [];
   });
 
   const [taskToEdit, setTaskToEdit] = useState(null);
+
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
