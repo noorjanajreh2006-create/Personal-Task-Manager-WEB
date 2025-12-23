@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
-const ListCategories = (props) => {
+    const ListCategories = (props) => {
+
     const [tasks, setTasks] = useState([]);
+
+    const [editId, setEditId] = useState(null);
+    const [editTitleCat, setEditTitleCat] = useState("");
 
     useEffect(() => {
         const storedTasks = JSON.parse(localStorage.getItem("tasks") || "[]");
@@ -13,9 +17,6 @@ const ListCategories = (props) => {
         );
     };
 
-    const [editId, setEditId] = useState(null);
-    const [editTitleCat, setEditTitleCat] = useState("");
-
     const saveEdit = (id)=>{
         props.setCategories(props.Categories.map((category)=>
             category.id===id? {...category,title:editTitleCat} : category)
@@ -23,6 +24,8 @@ const ListCategories = (props) => {
         setEditId(null);
         setEditTitleCat("");
     }
+
+
 
     return (
         <div>
@@ -84,7 +87,7 @@ const styles={
 
 },
     delete_btn: {
-        
+
         borderRadius:"10px",
         boxShadow:"rgba(0, 0, 0, 0.06) 0px 4px 14px",
         marginLeft: "10px",
