@@ -36,7 +36,6 @@ const AddCategories=()=> {
             {
                 id: Date.now(),
                 title: newCategory,
-                tasks: [],
             },
         ]);
 
@@ -49,7 +48,7 @@ const AddCategories=()=> {
 
             <div style={styles.add_category}>
                 <input style={styles.input} type="text" placeholder="Category name" value={newCategory} onChange={(e) => setNewCategory(e.target.value)}/>
-                <button style={styles.button} onClick={addCategory}>Add Category</button>
+                <button style={styles.Addcategry_btn} onClick={addCategory}>Add Category</button>
             </div>
 
             <ListCategories Categories={categories} setCategories={setCategories} />
@@ -59,29 +58,30 @@ const AddCategories=()=> {
 }
 const styles={
     categories_page : {
-    border :"2px black solid",
-    font_family:"sans-serif",
-    margin_left: "650px",
+    boxShadow:" rgba(0, 0, 0, 0.06) 0px 4px 14px",
+    border :"1px gray solid",
+    fontFamily:"sans-serif",
     padding :"20px"
 },
     h1: {
-        margin_bottom: "20px",
-        margin_left: "60px"
+        marginBottom: "20px",
+        marginLeft: "60px"
 },
     add_category: {
     display: "flex",
-    margin_bottom: "30px"
+    marginBottom: "30px"
 },
     input :{
         padding: "8px",
         width: "200px",
-        font_size:"20px"
+        fontSize:"20px"
 },
-    button: {
+    Addcategry_btn: {
+        boxShadow:" rgba(0, 0, 0, 0.06) 0px 4px 14px",
         padding: "8px 15px",
-        font_size:"20px",
-        border :"2px black solid",
-        margin_left: "15px",
+        fontSize:"20px",
+        border :"1px gray solid",
+        marginLeft: "15px",
         background:"lightgreen"
 },
 
