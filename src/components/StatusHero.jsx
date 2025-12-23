@@ -52,7 +52,7 @@ const styles = {
   },
 
   title: {
-    margin: "0 0 8px -160px",       
+    margin: "0 0 8px 0px",       
     fontSize: "32px",
     color: "#3a8f8a",
     fontWeight: "600",

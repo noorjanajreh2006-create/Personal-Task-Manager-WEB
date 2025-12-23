@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import PrioritiesTaskItem from "../components/PrioritiesTaskItem";
 import PriorityModal from "../components/PriorityModal";
 import Footer from "../components/Footer";
-import PriorityTables from "../components/PriorityTables";
 
 function Priorities() {
   const [tasks, setTasks] = useState(() => {
@@ -188,14 +187,5 @@ const yellowCard = {
 const redCard = {
   background: "#22c55e",
 };
-
-function Dashboard() {
-  return (
-    <div className="container">
-      <h1>Task Priorities</h1>
-      <PriorityTables />
-    </div>
-  );
-}
 
 export default Priorities;

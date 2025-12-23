@@ -1,25 +1,31 @@
 import React, { useEffect, useMemo, useState } from "react";
+import TaskRow from "./TaskRow";
 
 const STORAGE_KEY = "tasks";
 
-function StatusCards({ styles, TaskRow }) {
+function StatusCards({ styles }) {
   const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
+  const loadTasks = () => {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
     setTasks(Array.isArray(saved) ? saved : []);
+  };
+
+  useEffect(() => {
+    loadTasks();
+
+    const refresh = () => loadTasks();
+    window.addEventListener("tasks-updated", refresh);
+
+    return () => window.removeEventListener("tasks-updated", refresh);
   }, []);
 
   const lists = useMemo(() => {
     const norm = (s) => String(s || "").trim().toLowerCase();
-    const isTodo = (t) => ["to do", "todo"].includes(norm(t.status));
-    const isMissed = (t) => ["missed"].includes(norm(t.status));
-    const isDone = (t) => ["done"].includes(norm(t.status));
-
     return {
-      todo: tasks.filter(isTodo),
-      missed: tasks.filter(isMissed),
-      done: tasks.filter(isDone),
+      todo: tasks.filter((t) => norm(t.status) === "to do"),
+      missed: tasks.filter((t) => norm(t.status) === "missed"),
+      done: tasks.filter((t) => norm(t.status) === "done"),
     };
   }, [tasks]);
 
@@ -32,7 +38,7 @@ function StatusCards({ styles, TaskRow }) {
         </div>
         <div style={styles.taskList}>
           {lists.todo.map((t) => (
-            <TaskRow key={t.id} title={t.title || "Untitled Task"} />
+            <TaskRow key={t.id} task={t} />
           ))}
         </div>
       </div>
@@ -44,7 +50,7 @@ function StatusCards({ styles, TaskRow }) {
         </div>
         <div style={styles.taskList}>
           {lists.missed.map((t) => (
-            <TaskRow key={t.id} title={t.title || "Untitled Task"} />
+            <TaskRow key={t.id} task={t} />
           ))}
         </div>
       </div>
@@ -56,7 +62,7 @@ function StatusCards({ styles, TaskRow }) {
         </div>
         <div style={styles.taskList}>
           {lists.done.map((t) => (
-            <TaskRow key={t.id} title={t.title || "Untitled Task"} />
+            <TaskRow key={t.id} task={t} />
           ))}
         </div>
       </div>
