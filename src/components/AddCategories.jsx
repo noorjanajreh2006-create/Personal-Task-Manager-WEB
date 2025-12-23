@@ -64,6 +64,7 @@ const styles={
     padding :"20px"
 },
     h1: {
+        color:"#2c7a7b",
         marginBottom: "20px",
         marginLeft: "60px"
 },
